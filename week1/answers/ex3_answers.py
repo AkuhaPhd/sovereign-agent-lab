@@ -97,7 +97,9 @@ It triggered the out of scope workflow detailed in the flows.yml file which has 
 # Compare Rasa CALM's handling of the out-of-scope request to what
 # LangGraph did in Exercise 2 Scenario 3. Min 40 words.
 OUT_OF_SCOPE_COMPARISON = """
-LangGraph allowed the agents autonomy to use available tools to solve task at hand while flows on the other and details the steps needed to complete a task. Making the later method more restrictive. 
+Rasa CALM handled the out-of-scope request by enforcing predefined flows and guardrails, rejecting or redirecting the request when it did not match an allowed intent. This made its behavior predictable but restrictive. 
+In contrast, LangGraph in Scenario 3 allowed more agent autonomy, attempting to use available tools even when the task was ambiguous or slightly out of scope. 
+This led to more flexible but sometimes less controlled behavior, where the agent explored possible solutions instead of strictly declining.
 """
 
 # ── Task B: Cutoff guard ───────────────────────────────────────────────────
@@ -109,7 +111,7 @@ TASK_B_FILES_CHANGED = ["exercise3_rasa/actions/actions.py"]
 
 # How did you test that it works? Min 20 words.
 TASK_B_HOW_YOU_TESTED = """
-I tested by reentering conversations 1-3 workflows, testing happy, failed and out of scope cases.
+I tested by reentering the above three conversational workflows, where I tested the happy case, failed case and out-of-scope case.
 """
 
 # ── CALM vs Old Rasa ───────────────────────────────────────────────────────
@@ -147,10 +149,8 @@ Think about:
 # Min 40 words.
 
 SETUP_COST_VALUE = """
-FILL ME IN
-
-Be specific. What can the Rasa CALM agent NOT do that LangGraph could?
-Is that a feature or a limitation for the confirmation use case?
-Think about: can the CALM agent improvise a response it wasn't trained on?
-Can it call a tool that wasn't defined in flows.yml?
+The extra setup in Rasa CALM buys strict control, predictability, and safety. 
+Unlike LangGraph, the CALM agent cannot improvise responses outside its defined flows or call tools that are not explicitly specified in flows.yml. 
+It will not explore or adapt dynamically if a user asks something unexpected. 
+This is a limitation in open-ended tasks, but for the confirmation use case it is actually a feature: it guarantees consistent behavior, avoids hallucinations, and ensures only approved actions are taken.
 """
